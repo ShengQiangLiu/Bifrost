@@ -10,6 +10,8 @@
 #ifndef _BIFROST_PACER_H
 #define _BIFROST_PACER_H
 
+//#define USE_FAKE_DATA_PRODUCER 1
+
 #include "bifrost/experiment_manager/experiment_data.h"
 #include "common.h"
 #include "uv_loop.h"
@@ -61,6 +63,9 @@ class BifrostPacer : public UvTimer::Listener {
   uint32_t get_pacing_bitrate_bps() { return pacing_bitrate_bps_; }
 
  private:
+  // UvLoop
+  UvLoop* uv_loop_ = nullptr;
+
   // observer
   Observer* observer_;
 
